@@ -1,0 +1,56 @@
+<!-- Begin page content -->
+<main class="flex-shrink-0">
+    <div class="container">
+        <div class='card'>
+            <div class='card-header'>
+                <h5>Lista dei libri</h5>
+            </div>
+            <div class='card-body'>
+                <a class="btn btn-primary" routerLink="/libro/create">Add New</a>
+
+                <div class='table-responsive'>
+                    <table class='table table-hover '>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Titolo</th>
+                                <th>Pagine</th>
+                                <th>Autore</th>
+                                <th>Data Pubblicazione</th>
+                                <th>Premiato</th>
+                                <th>Azione</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let libroItem of listaLibri">
+                                <td>{{libroItem.id}}</td>
+                                <td>{{libroItem.titolo}}</td>
+                                <td>{{libroItem.pagine}}</td>
+                                <td>{{libroItem.autore}}</td>
+                                <td>{{libroItem.dataPubblicazione | date:"dd/MM/yyyy"}}</td>
+                                <td>{{libroItem.premiato}}</td>
+                                <td>
+                                    <button class="btn  btn-sm btn-outline-primary"
+                                        [routerLink]="['/libro/detail/', libroItem.id]">
+                                        Visualizza
+                                    </button>
+                                    <button class="btn  btn-sm btn-outline-danger"
+                                        [routerLink]="['/libro/delete/', libroItem.id]">
+                                        Delete
+                                    </button>
+                                    <button class="btn  btn-sm btn-outline-info"
+                                        [routerLink]="['/libro/edit/', libroItem.id]">
+                                        Edit
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- end card-body -->
+            </div>
+            <!-- end card -->
+        </div>
+        <!-- end container -->
+    </div>
+</main>

@@ -1,0 +1,137 @@
+<main class="flex-shrink-0">
+
+    <div class="container">
+        <div class='card' *ngIf="libro">
+            <div class='card-header' align="center">
+                <h5>Inserisci elemento</h5>
+            </div>
+
+            <form (ngSubmit)="edit(libroForm)" #libroForm="ngForm" novalidate>
+
+                <div class='card-body row g-3'>
+                    <div class="col-md-6">
+                        <label for="titolo" class="form-label">Titolo </label>
+                        <input type="text" id="titolo" class="form-control" [(ngModel)]="libro.titolo" name="titolo"
+                            #titoloVar="ngModel" required minlength="2" placeholder="Inserire il titolo"
+                            [ngClass]="{'is-invalid': (titoloVar.touched || titoloVar.dirty) && !titoloVar.valid }">
+                        <span class="invalid-feedback">
+                            <span *ngIf="titoloVar.errors?.['required']">
+                                Prego inserire un valore
+                            </span>
+                            <span *ngIf="titoloVar.errors?.['minlength']">
+                                Il campo deve avere almeno due caratteri.
+                            </span>
+                        </span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="pagine" class="form-label">Pagine </label>
+                        <input type="number" id="pagine" class="form-control" [(ngModel)]="libro.pagine" name="pagine"
+                            #pagineVar="ngModel" required placeholder="Inserire il numero delle pagine"
+                            [ngClass]="{'is-invalid': (pagineVar.touched || pagineVar.dirty) && !pagineVar.valid }">
+                        <span class="invalid-feedback">
+                            <span *ngIf="pagineVar.errors?.['required']">
+                                Prego inserire un valore
+                            </span>
+                        </span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="autore" class="form-label">Autore </label>
+                        <input type="text" id="autore" class="form-control" [(ngModel)]="libro.autore" name="autore"
+                            #autoreVar="ngModel" required minlength="2" placeholder="Inserire l'autore"
+                            [ngClass]="{'is-invalid': (autoreVar.touched || autoreVar.dirty) && !autoreVar.valid }">
+                        <span class="invalid-feedback">
+                            <span *ngIf="autoreVar.errors?.['required']">
+                                Prego inserire un valore
+                            </span>
+                            <span *ngIf="autoreVar.errors?.['minlength']">
+                                Il campo deve avere almeno due caratteri.
+                            </span>
+                        </span>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="dataPubblicazione" class="form-label">Data pubblicazione </label>
+                        <input type="date" id="dataPubblicazione" class="form-control"
+                            [(ngModel)]="libro.dataPubblicazione" #dataVar="ngModel" name="dataPubblicazione" required
+                            placeholder="dd/MM/yy"
+                            [ngClass]="{'is-invalid': (dataVar.touched || dataVar.dirty) && !dataVar.valid }">
+                        <span class="invalid-feedback">
+                            <span *ngIf="dataVar.errors?.['required']">
+                                Prego inserire un valore
+                            </span>
+                        </span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" id="premiatoId" name="premiato"
+                                [(ngModel)]="libro.premiato">
+                            <label class="form-check-label" for="premiatoId">Premiato</label>
+                        </div>
+                    </div>
+                    <br>
+                    <button type="submit" [disabled]="!libroForm.valid" name="submit" value="submit" id="submit"
+                        class="btn btn-primary">Salva</button>
+                    <a routerLink="/libro/list"><button class="btn btn-sm btn-outline-secondary">Torna alla
+                            lista</button></a>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+</main>
+<!--
+<main class="flex-shrink-0">
+    <div class="container">
+        <div class='card' *ngIf="libro">
+            <div class='card-header' align="center">
+                <h5>Aggiorna elemento</h5>
+            </div>
+
+            <div class='card-body row g-3'>
+                <div class="col-md-6">
+                    <label for="titolo" class="form-label">Titolo </label>
+                    <input type="text" id="titolo" class="form-control" [(ngModel)]="libro.titolo"
+                        placeholder="Inserire il titolo">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="pagine" class="form-label">Pagine </label>
+                    <input type="number" id="pagine" class="form-control" [(ngModel)]="libro.pagine"
+                        placeholder="Inserire il numero delle pagine">
+                </div>
+
+                <div class="col-md-6">
+                    <label for="autore" class="form-label">Autore </label>
+                    <input type="text" id="autore" class="form-control" [(ngModel)]="libro.autore"
+                        placeholder="Inserire l'autore">
+                </div>
+
+                <div class="col-md-3">
+                    <label for="dataPubblicazione" class="form-label">Data pubblicazione </label>
+                    <input type="date" id="dataPubblicazione" class="form-control"
+                        [(ngModel)]="dataPubblicazioneString">
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-check form-switch">
+                        <input class="form-check-input" type="checkbox" id="premiatoId" name="premiato"
+                            [(ngModel)]="libro.premiato">
+                        <label class="form-check-label" for="premiatoId">Premiato</label>
+                    </div>
+                </div>
+                <br>
+                <a><button class="btn btn-primary" (click)="edit()">Confirm</button></a>
+                <a routerLink="/libro/list"><button class="btn btn-sm btn-outline-secondary">Torna alla
+                        lista</button></a>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+-->
